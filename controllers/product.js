@@ -19,14 +19,27 @@ exports.getById = async (req, res, next) => {
 
     const { id } = req.params
 
-    console.log(id)
-    
     await productService.productById(id)
         .then(product => {
            
             res.status(200).json({ 
                 message: 'Product found.', 
                 product: product 
+            })
+        })
+        .catch(error => {
+            res.status(404).json({ error })
+            next(error)
+        })
+}
+
+exports.getByCategory = async (req, res, next) => {
+    const { code } = req.params
+    await productService.productByCategory(code)
+        .then(products => {
+            return res.status(200).json({
+                message: 'Fetched products by category',
+                products: products,
             })
         })
         .catch(error => {

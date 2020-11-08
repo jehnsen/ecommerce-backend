@@ -8,6 +8,8 @@ router.get('/', productController.getAll);
 
 router.get('/:id', productController.getById)
 
+router.get('/categories/:code', productController.getByCategory);
+
 router.post('/',  productController.create) //isAuth
 
 router.put('/', productController.update) //isAuth

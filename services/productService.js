@@ -6,12 +6,19 @@ module.exports = {
 
     productById: async (id) => await Product.findById(id),
 
-    insert: async ({ productName, price, imageUrl, categoryCode }) => {
+    productByCategory: async (code) => {
+        let res = await Product.find({ categoryCode: code })
+        console.log(res)
+        return res;
+    },
+
+    insert: async ({ productName, price, imageUrl, categoryCode, description }) => {
         const product = new Product({
             productName,
             price,
             imageUrl,
-            categoryCode
+            categoryCode,
+            description
         })
 
         return await product.save();
