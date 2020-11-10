@@ -49,7 +49,7 @@ exports.getByCategory = async (req, res, next) => {
 }
 
 exports.create = async (req, res, next) => {
-
+   
     productService.insert(req.body)
         .then(result => {
             res.status(201).json({ 
