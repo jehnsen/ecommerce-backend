@@ -4,6 +4,27 @@ const router = express.Router();
 // const redisCache = require('../utils/redisCache')
 // const redisClient = require('../utils/redisClient')
 
+// const message = new Promise(function(resolve, reject) {
+//     const status = false
+//     if(status) {
+//         resolve({ response: 'connected!' })
+//     } else {
+//         reject(new Error('not connected to server.'))
+//     }
+// })
+
+// function setMessage() {
+//     return message
+//         .then(result => console.log(result.response))
+//         .catch(err => err.message)
+// }
+
+// router.post('/', function(req, res) {
+
+//     setMessage()
+
+// });
+
 // router.get('/todos', async function(req, res, next) {
 
 //     const result = await fetch(
