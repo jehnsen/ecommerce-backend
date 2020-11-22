@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const categoryController = require('../controllers/category')
-// const isAuth = require('../middleware/is-auth');
+const auth = require('../middlewares/auth');
 
 router.get('/', categoryController.getAllCategories);
 
 router.get('/:id', categoryController.getCategoryById)
 
-router.post('/',  categoryController.create) //isAuth
+router.post('/', auth, categoryController.create)
 
-router.put('/', categoryController.update) //isAuth
+router.put('/', auth, categoryController.update)
 
-router.delete('/:id', categoryController.delete) //isAuth
+router.delete('/:id', auth, categoryController.delete)
 
 module.exports = router;

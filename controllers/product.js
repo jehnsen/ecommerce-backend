@@ -33,6 +33,16 @@ exports.getById = async (req, res, next) => {
         })
 }
 
+exports.search = async (req, res) => {
+    const { criteria, price } = req.body
+    await productService.searchProduct(criteria, price)
+        .then(result => {
+            res.status(200).json({ 
+                data: result
+            })
+        })
+}
+
 exports.getByCategory = async (req, res, next) => {
     const { code } = req.params
     await productService.productByCategory(code)

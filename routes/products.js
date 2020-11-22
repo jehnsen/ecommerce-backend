@@ -7,14 +7,16 @@ const productController = require('../controllers/product')
 
 router.get('/', productController.getAll);
 
-router.get('/:id', auth, productController.getById)
+router.get('/:id', productController.getById)
 
 router.get('/categories/:code', productController.getByCategory);
 
-router.post('/',  productController.create) //isAuth
+router.post('/search', productController.search);
 
-router.put('/', productController.update) //isAuth
+router.post('/',  auth, productController.create)
 
-router.delete('/:id', productController.delete) //isAuth
+router.put('/', auth, productController.update)
+
+router.delete('/:id', auth, productController.delete)
 
 module.exports = router;

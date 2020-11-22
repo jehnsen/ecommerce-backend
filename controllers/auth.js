@@ -4,15 +4,15 @@ const jwt = require('jsonwebtoken');
 
 exports.signup = async (req, res, next) => {
 
-    await authService.create(req.body)
+    await authService.create(req.body) 
         .then(result => {
-   
             return res.status(201).json({ 
                 message: 'New user was created!',
                 user: result
             })
         })
-        .catch(error => res.status(500).json({ message: 'User already exists!' }))
+        .catch(err => res.status(500).json({ err }))
+
 }
 
 exports.signin = async (req, res, next) => {
