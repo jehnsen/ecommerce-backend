@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const csurf = require('csurf');
 const logger = require('morgan');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
@@ -21,6 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(helmet());
 // app.use(csrfMiddleware);
 app.use(cors({ origin: process.env.CORS_ORIGIN_URI }))
 
