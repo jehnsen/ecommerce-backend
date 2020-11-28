@@ -29,7 +29,6 @@ app.use(cors({ origin: process.env.CORS_ORIGIN_URI }))
 require('./loaders/index');
 
 app.use('/', indexRouter);
-
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/products', productsRouter);
 app.use('/api/v1/categories', categoryRouter);
