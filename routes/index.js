@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+router.get('/', function(req, res) {
+
+    res.send('success!')
+
+});
+
 // const redisCache = require('../utils/redisCache')
 // const redisClient = require('../utils/redisClient')
 
