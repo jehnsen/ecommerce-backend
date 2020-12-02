@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const categorySchema = new Schema(
     {
+        code: {
+            type: String,
+            required: true
+        },
         categoryName: {
             type: String,
             required: true
@@ -12,6 +16,10 @@ const categorySchema = new Schema(
             required: false
         },
         imageUrl: {
+            type: String,
+            required: false
+        },
+        imageSize: {
             type: String,
             required: false
         }
