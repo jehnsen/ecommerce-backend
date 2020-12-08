@@ -30,7 +30,7 @@ exports.insert = async ({ productName, price, imageUrl, categoryCode, descriptio
 
 exports.update = async (product) => {
     return await Product.findOneAndUpdate(
-        { _id: id },
+        { _id: product.id },
         {
             $set: {
                 productName: product.productName,
