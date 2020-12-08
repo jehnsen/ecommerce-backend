@@ -28,15 +28,18 @@ exports.insert = async ({ productName, price, imageUrl, categoryCode, descriptio
     return await product.save();
 }
 
-exports.update = async ({ id, productName, price, imageUrl, categoryCode }) => {
+exports.update = async (product) => {
     return await Product.findOneAndUpdate(
         { _id: id },
         {
             $set: {
-                productName,
-                price,
-                imageUrl,
-                categoryCode
+                productName: product.productName,
+                description: product.description,
+                price: product.price,
+                imageUrl: product.imageUrl,
+                categoryCode: product.categoryCode,
+                size: product.size,
+                color: product.color
             }
         },
         { new: true },
