@@ -24,7 +24,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(helmet());
 // app.use(csrfMiddleware);
-app.use(cors({ origin: process.env.CORS_ORIGIN_URI }))
+// app.use(cors({ origin: process.env.CORS_ORIGIN_URI }))
+app.use(cors({
+    origin: function (origin, callback) {
+      // bypass the requests with no origin (like curl requests, mobile apps, etc )
+      if (!origin) return callback(null, true);
+   
+      if (process.env.CORS_ORIGIN_URI.indexOf(origin) === -1) {
+        const msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    }
+  }));
 
 require('./loaders/index');
 
